@@ -9,9 +9,11 @@ services:
     depends_on:
       - db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/temelio
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/temelio
       - SPRING_DATASOURCE_USERNAME=compose-postgres
       - SPRING_DATASOURCE_PASSWORD=compose-postgres
+    ports:
+      - 8080:8080
           
   db:
     image: 'postgres:13.1-alpine'
@@ -19,3 +21,4 @@ services:
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
+      - POSTGRES_DB=temelio
